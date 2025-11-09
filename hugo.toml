@@ -1,7 +1,6 @@
 baseURL = 'https://seferos.github.io/sports-database/'
 languageCode = 'ru-ru'
 title = 'Sports Database'
-theme = ''
 
 [params]
   description = 'Научно-спортивная база знаний'
