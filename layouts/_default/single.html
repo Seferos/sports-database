@@ -1,0 +1,139 @@
+﻿{{ define "main" }}
+<div class="article-page">
+    <div class="back-button">
+        <button onclick="history.back()">← Назад к разделу</button>
+    </div>
+
+    <article class="article-content">
+        <header class="article-header">
+            <h1>{{ .Title }}</h1>
+            <div class="article-meta">
+                <span class="date">{{ .Date.Format "2 January 2006" }}</span>
+                {{ if .Params.source }}
+                <span class="source">
+                    🔗 <a href="{{ .Params.source }}" target="_blank">Источник</a>
+                </span>
+                {{ end }}
+            </div>
+        </header>
+
+        <div class="article-body">
+            {{ .Content }}
+        </div>
+
+        <footer class="article-footer">
+            {{ if .Params.tags }}
+            <div class="tags">
+                <strong>Теги:</strong>
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </footer>
+    </article>
+</div>
+
+<style>
+.article-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.back-button {
+    margin-bottom: 30px;
+}
+
+.back-button button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.article-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.article-meta {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+}
+
+.article-meta .source {
+    margin-left: 20px;
+}
+
+.article-meta a {
+    color: #4d96ff;
+    text-decoration: none;
+}
+
+.article-meta a:hover {
+    text-decoration: underline;
+}
+
+.article-body {
+    line-height: 1.7;
+    font-size: 1.1em;
+}
+
+.article-body h2 {
+    color: #ffd93d;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.article-body ul, .article-body ol {
+    margin: 20px 0;
+    padding-left: 30px;
+}
+
+.article-body li {
+    margin-bottom: 10px;
+}
+
+.article-body strong {
+    color: #ff6b6b;
+}
+
+.article-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+</style>
+{{ end }}

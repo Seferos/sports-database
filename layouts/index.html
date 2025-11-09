@@ -1,0 +1,138 @@
+﻿{{ define "main" }}
+<div class="header">
+    <h1 class="welcome-text">Добро пожаловать в научно-спортивную базу знаний</h1>
+</div>
+
+<div class="cards-grid">
+    <div class="card" onclick="location.href='/hypertrophy/'">
+        <div class="card-border"></div>
+        <div class="card-icon">📈</div>
+        <h2>Гипертрофия</h2>
+        <p>Набор мышечной массы, программы тренировок, питание</p>
+    </div>
+    
+    <div class="card" onclick="location.href='/strength/'">
+        <div class="card-border"></div>
+        <div class="card-icon">⚡</div>
+        <h2>Сила</h2>
+        <p>Развитие силы, пауэрлифтинг, программы</p>
+    </div>
+    
+    <div class="card" onclick="location.href='/endurance/'">
+        <div class="card-border"></div>
+        <div class="card-icon">🔥</div>
+        <h2>Выносливость</h2>
+        <p>Кардио, бег, функциональный тренинг</p>
+    </div>
+    
+    <div class="card" onclick="location.href='/recovery/'">
+        <div class="card-border"></div>
+        <div class="card-icon">🔄</div>
+        <h2>Восстановление</h2>
+        <p>Сон, питание, мобильность, здоровье</p>
+    </div>
+</div>
+
+<style>
+.header {
+    text-align: center;
+    padding: 60px 0 40px 0;
+}
+
+.welcome-text {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Анимированная светящаяся обводка */
+.card-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff, #ff6b6b);
+    background-size: 400% 400%;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradientMove 3s ease infinite;
+}
+
+.card:hover .card-border {
+    opacity: 1;
+}
+
+.card-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.card h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+}
+
+/* Анимация движения градиента */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>
+{{ end }}
